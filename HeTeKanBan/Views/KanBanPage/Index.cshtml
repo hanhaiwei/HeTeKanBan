@@ -1,0 +1,80 @@
+﻿@model HeTeKanBan.Models.KanBanPage
+
+@{
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="panel panel-primary">
+        <div class="panel-body">
+        <h1>和而泰和而泰输送线投箱电子看板</h1>
+           </div>
+    </div>
+    <div class="container">
+        <table class="table" cellpadding=0 cellspacing=0 width=1080 border=0>
+            <tr>
+                <td align=top width=50% valign=top>
+                    <!--第一张表-->
+                    <table class="table table-bordered btn-group-xs"  border=1 bordercolordark=white bordercolorlight=black cellpadding=0 cellspacing=0>
+                        <tbody>
+                            <tr>
+                                <!--总标题-->
+                                <td colspan="3">可投箱状态</td>
+                            </tr>
+                            <tr>
+                                <!--列标题-->
+                                <td>线别</td>
+                                <td>机型</td>
+                                <td>状态</td>
+                            </tr>
+                            <!--列内容-->
+                            @foreach (var state in Model.states)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(line => state.LineName)</td>
+                                    <td>@Html.DisplayFor(line => state.Machine)</td>
+                                    <td>@Html.DisplayFor(line => state.State)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td><!--end第一张表-->
+
+                <td valign=top>
+                    <!--第二张表-->
+                    <table class="table table-bordered" width=100% border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0>
+                        <tr>
+                            <td colspan="4">投箱任务列表</td>
+                        </tr>
+                        <tr>
+                            <td>线别</td>
+                            <td>机型</td>
+                            <td>可投箱数</td>
+                            <td>已投箱数</td>
+                        </tr>
+                        @foreach (var task in Model.tasks)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(showTask => task.LineName)</td>
+                                <td>@Html.DisplayFor(showTask => task.Machine)</td>
+                                <td>@Html.DisplayFor(showTask => task.AbleAmount)</td>
+                                <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
+                            </tr>
+                        }
+
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>

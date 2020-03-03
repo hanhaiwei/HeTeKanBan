@@ -1,0 +1,14 @@
+﻿@model IEnumerable<HeTeKanBan.Models.LineDropBoxState>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<body>
+    @foreach(var item in Model)
+    {
+        @Html.DisplayFor(model=>item.Machine);
+        <div>-------</div>
+    }
+</body>
+
