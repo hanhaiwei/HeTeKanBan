@@ -25,7 +25,7 @@
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/HeTeKanBan.dll">
-      <publishTime>03/03/2020 11:58:36</publishTime>
+      <publishTime>03/18/2020 19:05:16</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/07/2015 19:04:38</publishTime>
@@ -214,13 +214,13 @@
       <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>02/28/2020 15:42:06</publishTime>
+      <publishTime>03/18/2020 18:45:30</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>02/28/2020 15:42:06</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/28/2020 15:42:03</publishTime>
+      <publishTime>03/18/2020 18:31:26</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>02/28/2020 15:42:03</publishTime>
@@ -255,6 +255,9 @@
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>02/28/2020 15:42:05</publishTime>
     </File>
+    <File Include="Scripts/fullScreen.js">
+      <publishTime>03/17/2020 17:58:06</publishTime>
+    </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>02/28/2020 15:42:06</publishTime>
     </File>
@@ -286,7 +289,7 @@
       <publishTime>02/28/2020 15:42:10</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>02/28/2020 15:42:10</publishTime>
+      <publishTime>03/17/2020 15:30:39</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>02/28/2020 15:42:12</publishTime>
@@ -334,7 +337,7 @@
       <publishTime>02/28/2020 15:42:03</publishTime>
     </File>
     <File Include="Views/KanBanPage/Details.cshtml">
-      <publishTime>03/03/2020 09:27:18</publishTime>
+      <publishTime>03/18/2020 19:04:43</publishTime>
     </File>
     <File Include="Views/KanBanPage/Index.cshtml">
       <publishTime>02/29/2020 23:55:50</publishTime>
@@ -370,7 +373,7 @@
       <publishTime>02/28/2020 15:42:12</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/28/2020 15:42:12</publishTime>
+      <publishTime>03/18/2020 18:48:42</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>02/28/2020 15:42:12</publishTime>
@@ -382,7 +385,7 @@
       <publishTime>02/28/2020 15:42:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/03/2020 11:58:37</publishTime>
+      <publishTime>03/18/2020 19:05:16</publishTime>
     </File>
   </ItemGroup>
 </Project>

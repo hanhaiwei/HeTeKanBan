@@ -167,6 +167,7 @@ textarea {
   font-size: 100%;
 }
 
+
 button,
 input {
   line-height: normal;
@@ -4166,6 +4167,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 
+
+
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
@@ -4501,7 +4504,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
   border-color: #080808;
 }
 
@@ -5335,7 +5337,7 @@ a.list-group-item:focus {
 }
 
 .panel-body {
-  padding: 15px;
+  padding: 5px;
 }
 
 .panel-body:before,

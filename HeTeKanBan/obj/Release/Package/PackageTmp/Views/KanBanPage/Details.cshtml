@@ -10,33 +10,31 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" >
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/modernizr")
+        <script src="~/Scripts/fullScreen.js"></script>
 </head>
-<body>
-    
-    <div class="panel panel-primary text-center">
-        <div class="panel-body">
-            <h1>和而泰和而泰输送线投箱电子看板（@ViewBag.kanBanName）</h1>
-        </div>
+<body onload="handleFullScreen();">
+    <div class="navbar navbar-fixed-top text-center">   
+            <h4>深圳和而泰输送线投箱电子看板（@ViewBag.kanBanName)</h4>
     </div>
-        <table class="table text-center" cellpadding=0 cellspacing=0  border=0 align="center" >
-            <tr >
-                <td align=top width=50% valign="top" >
+        <table class="table text-center" cellpadding=0 cellspacing=0 border=0 align="center" style="margin:0px">
+            <tr>
+                @{int i = 1;}
+                <td width=40% valign="top">
                     <!--第一张表-->
-                    <table class="table table-bordered btn-group-xs" border=1 bordercolordark=white bordercolorlight=black cellpadding=0 cellspacing=0>
+                    <table class="table table-bordered btn-group-xs" border=1 bordercolordark=white bordercolorlight=black cellpadding=0 cellspacing=0 style="margin:0px">
                         <tbody>
                             <tr>
                                 <!--总标题-->
-                                <td colspan="3" class="btn-primary"><h3>可投箱状态</h3></td>
+                                <td colspan="3" class="btn-primary"><h5>可投箱状态</h5></td>
                             </tr>
                             <tr class="btn-primary">
                                 <!--列标题-->
-                                <td><h4>线别</h4></td>
-                                <td><h4>机型</h4></td>
-                                <td><h4>状态</h4></td>
+                                <td><h6>线别</h6></td>
+                                <td><h6>机型</h6></td>
+                                <td><h6>状态</h6></td>
                             </tr>
                             <!--列内容-->
-                            @{int i = 1;}
                             @foreach (var state in Model.states)
                             {
                                 if (i % 2 == 0)
@@ -61,38 +59,40 @@
                     </table>
                 </td><!--end第一张表-->
 
-                <td valign=top width="50%">
+                <td valign=top width="60%">
                     <!--第二张表-->
-                    <table class="table table-bordered"  border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0>
+                    <table class="table table-bordered" border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0 style="margin:0px">
                         <tr>
-                            <td colspan="4" class="btn-primary"><h3>投箱任务列表</h3></td>
+                            <td colspan="4" class="btn-primary"><h5>投箱任务列表</h5></td>
                         </tr>
                         <tr class="btn-primary">
-                            <td><h4>线别</h4></td>
-                            <td><h4>机型</h4></td>
-                            <td><h4>可投箱数</h4></td>
-                            <td><h4>已投箱数</h4></td>
+                            <td><h6>线别</h6></td>
+                            <td><h6>机型</h6></td>
+                            <td><h6><b>可投箱数</b></h6></td>
+                            <td><h6>已投箱数</h6></td>
                         </tr>
                         @{int m = 1;}
                         @foreach (var task in Model.tasks)
                         {
                             if (m % 2 == 0)
                             {
-                                <!--tr class="success"--><tr class="btn-primary" style="font-size:medium">
+                                <!--tr class="success"-->
+                                <tr class="btn-primary" style="font-size:medium">
                                     <td>@Html.DisplayFor(showTask => task.LineName)</td>
                                     <td>@Html.DisplayFor(showTask => task.Machine)</td>
-                                    <td>@Html.DisplayFor(showTask => task.AbleAmount)</td>
+                                    <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
                                     <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
                                 </tr>
                             }
                             else
                             {
-                                <!--tr class="active"--><tr class="btn-primary" style="font-size:medium">
+                                <!--tr class="active"-->
+                                <tr class="btn-primary" style="font-size:medium">
                                     <td>@Html.DisplayFor(showTask => task.LineName)</td>
                                     <td>@Html.DisplayFor(showTask => task.Machine)</td>
-                                    <td>@Html.DisplayFor(showTask => task.AbleAmount)</td>
+                                    <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
                                     <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
-                                </tr> 
+                                </tr>
                             }
                             m += 1;
                         }
@@ -101,6 +101,5 @@
                 </td>
             </tr>
         </table>
-
 </body>
 </html>
