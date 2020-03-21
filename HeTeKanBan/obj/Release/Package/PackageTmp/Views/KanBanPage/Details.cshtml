@@ -26,9 +26,9 @@
                         <tbody>
                             <tr>
                                 <!--总标题-->
-                                <td colspan="3" class="btn-primary" style="font-size:medium">可投箱状态</td>
+                                <td colspan="3" class="btn-primary" style="font-size:smaller">可投箱状态</td>
                             </tr>
-                            <tr class="btn-primary" style="font-size:medium">
+                            <tr class="btn-primary" style="font-size:smaller">
                                 <!--列标题-->
                                 <td>线别</td>
                                 <td>机型</td>
@@ -39,7 +39,7 @@
                             {
                                 if (i % 2 == 0)
                                 {
-                                    <tr class="btn-primary" style="font-size:medium">
+                                    <tr class="btn-primary" style="font-size:smaller">
                                         <td>@Html.DisplayFor(line => state.LineName)</td>
                                         <td>@Html.DisplayFor(line => state.Machine)</td>
                                         <td>@Html.DisplayFor(line => state.State)</td>
@@ -47,7 +47,7 @@
                                 }
                                 else
                                 {
-                                    <tr class="btn-primary" style="font-size:medium">
+                                    <tr class="btn-primary" style="font-size:smaller">
                                         <td>@Html.DisplayFor(line => state.LineName)</td>
                                         <td>@Html.DisplayFor(line => state.Machine)</td>
                                         <td>@Html.DisplayFor(line => state.State)</td>
@@ -63,38 +63,40 @@
                     <!--第二张表-->
                     <table class="table table-bordered" border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0 style="margin:0px">
                         <tr>
-                            <td colspan="4" class="btn-primary" style="font-size:medium">投箱任务列表</td>
+                            <td colspan="5" class="btn-primary" style="font-size:smaller">投箱任务列表</td>
                         </tr>
                         <tr class="btn-primary">
                             <td>线别</td>
                             <td>机型</td>
                             <td><b>可投箱数</b></td>
                             <td>已投箱数</td>
+                            <td>等待</td>
                         </tr>
-                        @{int m = 1;}
                         @foreach (var task in Model.tasks)
                         {
-                            if (m % 2 == 0)
+                            int m;
+                            if (int.TryParse(task.udf3, out m)&&m >30)
                             {
                                 <!--tr class="success"-->
-                                <tr class="btn-primary" style="font-size:medium">
+                                <tr class="btn-danger" style="font-size:smaller">
                                     <td>@Html.DisplayFor(showTask => task.LineName)</td>
                                     <td>@Html.DisplayFor(showTask => task.Machine)</td>
                                     <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
                                     <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
+                                    <td>@Html.DisplayFor(showTask => task.udf3)"分"</td>
                                 </tr>
                             }
                             else
                             {
                                 <!--tr class="active"-->
-                                <tr class="btn-primary" style="font-size:medium">
+                                <tr class="btn-primary" style="font-size:smaller">
                                     <td>@Html.DisplayFor(showTask => task.LineName)</td>
                                     <td>@Html.DisplayFor(showTask => task.Machine)</td>
                                     <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
                                     <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
+                                    <td>@Html.DisplayFor(showTask => task.udf3)+"分"</td>
                                 </tr>
                             }
-                            m += 1;
                         }
                     </table>
                 </td>

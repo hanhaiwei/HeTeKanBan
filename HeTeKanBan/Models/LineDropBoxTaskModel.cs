@@ -14,7 +14,7 @@ namespace HeTeKanBan.Models
         public string AbleAmount { get; set; }
         public string AlreadyAmount { get; set; }
   
-        //public DateTime udf3 { get; set; }
+        public string udf3 { get; set; }
         //public string sku { get; set; }
     }
 }

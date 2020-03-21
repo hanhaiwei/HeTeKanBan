@@ -35,15 +35,18 @@ namespace HeTeKanBan.Controllers
                            select lineDropBoxStates;
             foreach(var state in states)
             {
-                state.Machine = state.Machine.Length>50?state.Machine.Substring(0,50):state.Machine;
+                state.Machine = state.Machine.Length>25?state.Machine.Substring(0,25):state.Machine;
             }
             pages.states = states;
             var tasks = from lineDropBoxTasks in db.LineDropBoxTasks
                           where lineDropBoxTasks.KanBanName == name
+                          orderby lineDropBoxTasks.udf3
                           select lineDropBoxTasks;//linq写法，易读
             foreach(var task in tasks)
             {
-                task.Machine = task.Machine.Length > 50 ? task.Machine.Substring(0, 50) : task.Machine;
+                task.Machine = task.Machine.Length > 25 ? task.Machine.Substring(0, 25) : task.Machine;
+                DateTime dateTime;//巷道已经分配时间
+                task.udf3 = DateTime.TryParse(task.udf3,out dateTime)?Math.Round(DateTime.Now.Subtract(dateTime).Duration().TotalMinutes,0).ToString():"--";
             }
             pages.tasks = tasks;
             return View(pages);
