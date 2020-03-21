@@ -12,5 +12,7 @@ namespace HeTeKanBan.Models
         public string KanBanName { get; set; }
         public string Machine { get; set; }
         public string State { get; set; }
+        //public DateTime Udf3 { get; set; }
+        //public string sku { get; set; }
     }
 }

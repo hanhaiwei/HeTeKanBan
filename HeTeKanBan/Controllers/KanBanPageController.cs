@@ -30,12 +30,22 @@ namespace HeTeKanBan.Controllers
         public ActionResult Details(string name)
         {
             ViewBag.kanBanName = name;//通过viewbag把controller的值传递给view，其中name是解析的url参数
-            pages.states = from lineDropBoxStates in db.LineDropBoxStates
+            var states = from lineDropBoxStates in db.LineDropBoxStates
                            where lineDropBoxStates.KanBanName==name
                            select lineDropBoxStates;
-            pages.tasks = from lineDropBoxTasks in db.LineDropBoxTasks
+            foreach(var state in states)
+            {
+                state.Machine = state.Machine.Length>50?state.Machine.Substring(0,50):state.Machine;
+            }
+            pages.states = states;
+            var tasks = from lineDropBoxTasks in db.LineDropBoxTasks
                           where lineDropBoxTasks.KanBanName == name
                           select lineDropBoxTasks;//linq写法，易读
+            foreach(var task in tasks)
+            {
+                task.Machine = task.Machine.Length > 50 ? task.Machine.Substring(0, 50) : task.Machine;
+            }
+            pages.tasks = tasks;
             return View(pages);
         }
 

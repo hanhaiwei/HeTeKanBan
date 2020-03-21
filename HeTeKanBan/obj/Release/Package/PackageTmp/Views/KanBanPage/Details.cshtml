@@ -14,8 +14,8 @@
         <script src="~/Scripts/fullScreen.js"></script>
 </head>
 <body onload="handleFullScreen();">
-    <div class="navbar navbar-fixed-top text-center">   
-            <h4>深圳和而泰输送线投箱电子看板（@ViewBag.kanBanName)</h4>
+    <div class="navbar navbar-fixed-top" style="text-align:center">   
+            <div class="body-content table-striped"><a class="navbar-brand">深圳和而泰输送线投箱电子看板（@ViewBag.kanBanName)</a></div>
     </div>
         <table class="table text-center" cellpadding=0 cellspacing=0 border=0 align="center" style="margin:0px">
             <tr>
@@ -26,13 +26,13 @@
                         <tbody>
                             <tr>
                                 <!--总标题-->
-                                <td colspan="3" class="btn-primary"><h5>可投箱状态</h5></td>
+                                <td colspan="3" class="btn-primary" style="font-size:medium">可投箱状态</td>
                             </tr>
-                            <tr class="btn-primary">
+                            <tr class="btn-primary" style="font-size:medium">
                                 <!--列标题-->
-                                <td><h6>线别</h6></td>
-                                <td><h6>机型</h6></td>
-                                <td><h6>状态</h6></td>
+                                <td>线别</td>
+                                <td>机型</td>
+                                <td>状态</td>
                             </tr>
                             <!--列内容-->
                             @foreach (var state in Model.states)
@@ -63,13 +63,13 @@
                     <!--第二张表-->
                     <table class="table table-bordered" border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0 style="margin:0px">
                         <tr>
-                            <td colspan="4" class="btn-primary"><h5>投箱任务列表</h5></td>
+                            <td colspan="4" class="btn-primary" style="font-size:medium">投箱任务列表</td>
                         </tr>
                         <tr class="btn-primary">
-                            <td><h6>线别</h6></td>
-                            <td><h6>机型</h6></td>
-                            <td><h6><b>可投箱数</b></h6></td>
-                            <td><h6>已投箱数</h6></td>
+                            <td>线别</td>
+                            <td>机型</td>
+                            <td><b>可投箱数</b></td>
+                            <td>已投箱数</td>
                         </tr>
                         @{int m = 1;}
                         @foreach (var task in Model.tasks)
@@ -96,7 +96,6 @@
                             }
                             m += 1;
                         }
-
                     </table>
                 </td>
             </tr>
