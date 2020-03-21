@@ -337,7 +337,7 @@
       <publishTime>02/28/2020 15:42:03</publishTime>
     </File>
     <File Include="Views/KanBanPage/Details.cshtml">
-      <publishTime>03/21/2020 16:59:34</publishTime>
+      <publishTime>03/21/2020 17:17:00</publishTime>
     </File>
     <File Include="Views/KanBanPage/Index.cshtml">
       <publishTime>02/29/2020 23:55:50</publishTime>
