@@ -36,6 +36,7 @@ namespace HeTeKanBan.Controllers
             foreach (var state in states)
             {
                 state.Machine = state.Machine.Length > 25 ? state.Machine.Substring(0, 25) : state.Machine;
+                state.State = state.State == null ? "非法" : state.State;
             }
             pages.states = states;
             var tasks = from lineDropBoxTasks in db.LineDropBoxTasks
