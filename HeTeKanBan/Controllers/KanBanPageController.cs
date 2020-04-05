@@ -33,9 +33,9 @@ namespace HeTeKanBan.Controllers
             var states = from lineDropBoxStates in db.LineDropBoxStates
                            where lineDropBoxStates.KanBanName==name
                            select lineDropBoxStates;
-            foreach(var state in states)
+            foreach (var state in states)
             {
-                state.Machine = state.Machine.Length>25?state.Machine.Substring(0,25):state.Machine;
+                state.Machine = state.Machine.Length > 25 ? state.Machine.Substring(0, 25) : state.Machine;
             }
             pages.states = states;
             var tasks = from lineDropBoxTasks in db.LineDropBoxTasks

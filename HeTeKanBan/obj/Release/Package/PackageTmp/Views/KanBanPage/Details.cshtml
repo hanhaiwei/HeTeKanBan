@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <!--刷新时间-->
-<meta http-equiv="refresh" content="10">
+<meta http-equiv="refresh" content="20">
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" >
@@ -65,11 +65,11 @@
                         <tr>
                             <td colspan="5" class="btn-primary" style="font-size:smaller">投箱任务列表</td>
                         </tr>
-                        <tr class="btn-primary">
+                        <tr class="btn-primary" style="font-size:smaller">
                             <td>线别</td>
                             <td>机型</td>
-                            <td><b>可投箱数</b></td>
-                            <td>已投箱数</td>
+                            <td><b>可投</b></td>
+                            <td>已投</td>
                             <td>等待</td>
                         </tr>
                         @foreach (var task in Model.tasks)
@@ -81,9 +81,9 @@
                                 <tr class="btn-danger" style="font-size:smaller">
                                     <td>@Html.DisplayFor(showTask => task.LineName)</td>
                                     <td>@Html.DisplayFor(showTask => task.Machine)</td>
-                                    <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
-                                    <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
-                                    <td>@Html.DisplayFor(showTask => task.udf3)分</td>
+                                    <td><b>@Html.DisplayFor(showTask => task.AbleAmount)箱</b></td>
+                                    <td>@Html.DisplayFor(showTask => task.AlreadyAmount)箱</td>
+                                    <td>@Html.DisplayFor(showTask => task.udf3)分钟</td>
                                 </tr>
                             }
                             else
@@ -94,7 +94,7 @@
                                     <td>@Html.DisplayFor(showTask => task.Machine)</td>
                                     <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
                                     <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
-                                    <td>@Html.DisplayFor(showTask => task.udf3)+"分"</td>
+                                    <td>@Html.DisplayFor(showTask => task.udf3)分钟</td>
                                 </tr>
                             }
                         }
