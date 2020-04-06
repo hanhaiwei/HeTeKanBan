@@ -17,6 +17,7 @@ namespace HeTeKanBan.Controllers
         public ActionResult Index()
         {
             var states = from dropBoxStates in db.LineDropBoxStates
+                         
                          select dropBoxStates;
             return View(states);
         }
