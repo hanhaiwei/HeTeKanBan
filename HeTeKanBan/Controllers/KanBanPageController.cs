@@ -18,6 +18,7 @@ namespace HeTeKanBan.Controllers
         // GET: KanBanIPage
         public ActionResult Index()
         {
+
             pages.states = db.LineDropBoxStates;//函数式写法
             pages.tasks = from lineDropBoxTasks in db.LineDropBoxTasks
                           select lineDropBoxTasks;//linq写法，易读
@@ -31,9 +32,9 @@ namespace HeTeKanBan.Controllers
         {
             ViewBag.kanBanName = name;//通过viewbag把controller的值传递给view，其中name是解析的url参数
             var states = from lineDropBoxStates in db.LineDropBoxStates
-                           where lineDropBoxStates.KanBanName==name
-                           orderby lineDropBoxStates.LineName
-                           select lineDropBoxStates;
+                         where lineDropBoxStates.KanBanName == name
+                         orderby lineDropBoxStates.LineName
+                         select lineDropBoxStates;
             //foreach (var state in states)
             //{
             //    state.Machine = state.Machine.Length > 25 ? state.Machine.Substring(0, 25) : state.Machine;
@@ -41,9 +42,9 @@ namespace HeTeKanBan.Controllers
             //}
             pages.states = states;
             var tasks = from lineDropBoxTasks in db.LineDropBoxTasks
-                          where lineDropBoxTasks.KanBanName == name
-                          orderby lineDropBoxTasks.udf3
-                          select lineDropBoxTasks;//linq写法，易读
+                        where lineDropBoxTasks.KanBanName == name
+                        orderby lineDropBoxTasks.udf3
+                        select lineDropBoxTasks;//linq写法，易读
             //foreach(var task in tasks)
             //{
             //    task.Machine = task.Machine.Length > 25 ? task.Machine.Substring(0, 25) : task.Machine;
