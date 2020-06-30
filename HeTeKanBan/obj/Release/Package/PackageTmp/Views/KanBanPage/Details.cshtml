@@ -5,102 +5,98 @@
 
 <!DOCTYPE html>
 <!--刷新时间-->
-<meta http-equiv="refresh" content="20">
+<meta http-equiv="refresh" content="30">
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-        <script src="~/Scripts/fullScreen.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/fullScreen.js"></script>
 </head>
 <body onload="handleFullScreen();">
-    <div class="navbar navbar-fixed-top" style="text-align:center">   
-            <div class="body-content table-striped"><a class="navbar-brand">深圳和而泰输送线投箱电子看板（@ViewBag.kanBanName)</a></div>
+    <div class="navbar navbar-fixed-top" style="text-align:center">
+        <div class="body-content table-striped"><a class="navbar-brand text-center">深圳和而泰输送线投箱电子看板（@ViewBag.kanBanName)</a></div>
     </div>
-        <table class="table text-center" cellpadding=0 cellspacing=0 border=0 align="center" style="margin:0px">
-            <tr>
-                @{int i = 1;}
-                <td width=40% valign="top">
-                    <!--第一张表-->
-                    <table class="table table-bordered btn-group-xs" border=1 bordercolordark=white bordercolorlight=black cellpadding=0 cellspacing=0 style="margin:0px">
-                        <tbody>
-                            <tr>
-                                <!--总标题-->
-                                <td colspan="3" class="btn-primary" style="font-size:smaller">可投箱状态</td>
-                            </tr>
-                            <tr class="btn-primary" style="font-size:smaller">
-                                <!--列标题-->
-                                <td>线别</td>
-                                <td>机型</td>
-                                <td>状态</td>
-                            </tr>
-                            <!--列内容-->
-                            @foreach (var state in Model.states)
-                            {
-                                if (i % 2 == 0)
-                                {
-                                    <tr class="btn-primary" style="font-size:smaller">
-                                        <td>@Html.DisplayFor(line => state.LineName)</td>
-                                        <td>@Html.DisplayFor(line => state.Machine)</td>
-                                        <td>@Html.DisplayFor(line => state.State)</td>
-                                    </tr>
-                                }
-                                else
-                                {
-                                    <tr class="btn-primary" style="font-size:smaller">
-                                        <td>@Html.DisplayFor(line => state.LineName)</td>
-                                        <td>@Html.DisplayFor(line => state.Machine)</td>
-                                        <td>@Html.DisplayFor(line => state.State)</td>
-                                    </tr>
-                                }
-                                i = i + 1;
-                            }
-                        </tbody>
-                    </table>
-                </td><!--end第一张表-->
-
-                <td valign=top width="60%">
-                    <!--第二张表-->
-                    <table class="table table-bordered" border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0 style="margin:0px">
+    <table class="table text-center" cellpadding=0 cellspacing=0 border=0 align="center" style="margin:0px">
+        <tr>
+            @{int i = 1;}
+            <td width=40% valign="top">
+                <!--第一张表-->
+                <table class="table table-bordered btn-group-xs" border=1 bordercolordark=white bordercolorlight=black cellpadding=0 cellspacing=0 style="margin:0px">
+                    <tbody>
                         <tr>
-                            <td colspan="5" class="btn-primary" style="font-size:smaller">投箱任务列表</td>
+                            <!--总标题-->
+                            <td colspan="3" class="btn-primary" style="font-size:smaller">可投箱状态</td>
                         </tr>
                         <tr class="btn-primary" style="font-size:smaller">
+                            <!--列标题-->
                             <td>线别</td>
                             <td>机型</td>
-                            <td><b>可投</b></td>
-                            <td>已投</td>
-                            <td>等待</td>
+                            <td>状态</td>
                         </tr>
-                        @foreach (var task in Model.tasks)
+                        <!--列内容-->
+                        @try
                         {
-                            int m;
-                            if (int.TryParse(task.udf3, out m)&&m >30)
+                            foreach (var state in Model.states)
                             {
-                                <!--tr class="success"-->
-                                <tr class="btn-danger" style="font-size:smaller">
-                                    <td>@Html.DisplayFor(showTask => task.LineName)</td>
-                                    <td>@Html.DisplayFor(showTask => task.Machine)</td>
-                                    <td><b>@Html.DisplayFor(showTask => task.AbleAmount)箱</b></td>
-                                    <td>@Html.DisplayFor(showTask => task.AlreadyAmount)箱</td>
-                                    <td>@Html.DisplayFor(showTask => task.udf3)分钟</td>
-                                </tr>
-                            }
-                            else
-                            {
-                                <!--tr class="active"-->
                                 <tr class="btn-primary" style="font-size:smaller">
-                                    <td>@Html.DisplayFor(showTask => task.LineName)</td>
-                                    <td>@Html.DisplayFor(showTask => task.Machine)</td>
-                                    <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
-                                    <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
-                                    <td>@Html.DisplayFor(showTask => task.udf3)分钟</td>
+                                    <td>@Html.DisplayFor(line => state.LineName)</td>
+                                    <td>@Html.DisplayFor(line => state.Machine)</td>
+                                    <td>@Html.DisplayFor(line => state.State)</td>
                                 </tr>
                             }
                         }
-                    </table>
-                </td>
-            </tr>
-        </table>
+                        catch (Exception)
+                        {
+
+                        }
+
+                    </tbody>
+                </table>
+            </td><!--end第一张表-->
+
+            <td valign=top width="60%">
+                <!--第二张表-->
+                <table class="table table-bordered" border=1 bordercolordark=white bordercolorlight=red cellpadding=0 cellspacing=0 style="margin:0px">
+                    <tr>
+                        <td colspan="5" class="btn-primary" style="font-size:smaller">投箱任务列表</td>
+                    </tr>
+                    <tr class="btn-primary" style="font-size:smaller">
+                        <td>线别</td>
+                        <td>机型</td>
+                        <td><b>可投</b></td>
+                        <td>已投</td>
+                        <td>等待</td>
+                    </tr>
+                    @foreach (var task in Model.tasks)
+                    {
+                        int m;
+                        if (int.TryParse(task.udf3, out m) && m > 30)
+                        {
+                                <!--tr class="success"-->
+                            <tr class="btn-danger" style="font-size:smaller">
+                                <td>@Html.DisplayFor(showTask => task.LineName)</td>
+                                <td>@Html.DisplayFor(showTask => task.Machine)</td>
+                                <td><b>@Html.DisplayFor(showTask => task.AbleAmount)箱</b></td>
+                                <td>@Html.DisplayFor(showTask => task.AlreadyAmount)箱</td>
+                                <td>@Html.DisplayFor(showTask => task.udf3)分钟</td>
+                            </tr>
+                        }
+                        else
+                        {
+                                <!--tr class="active"-->
+                            <tr class="btn-primary" style="font-size:smaller">
+                                <td>@Html.DisplayFor(showTask => task.LineName)</td>
+                                <td>@Html.DisplayFor(showTask => task.Machine)</td>
+                                <td><b>@Html.DisplayFor(showTask => task.AbleAmount)</b></td>
+                                <td>@Html.DisplayFor(showTask => task.AlreadyAmount)</td>
+                                <td>@Html.DisplayFor(showTask => task.udf3)分钟</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
